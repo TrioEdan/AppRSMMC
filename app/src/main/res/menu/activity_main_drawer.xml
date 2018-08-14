@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_daftar"
+            android:icon="@drawable/ic_add_to_photos_black_24dp"
+            android:title="Daftar Pasien Lama" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_accessible_black_24dp"
+            android:title="History Pendaftaran" />
+        <item
+            android:id="@+id/nav_jadwal"
+            android:icon="@drawable/ic_access_alarms_black_24dp"
+            android:title="Jadwal Dokter" />
+        <item
+            android:id="@+id/nav_berita"
+            android:icon="@drawable/ic_poll_black_24dp"
+            android:title="Berita" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_bantuan"
+                android:icon="@drawable/ic_help_black_24dp"
+                android:title="Bantuan" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_info_black_24dp"
+                android:title="about" />
+            <item
+                android:id="@+id/nav_kontak"
+                android:icon="@drawable/ic_contact_phone_black_24dp"
+                android:title="Kontak" />
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_share_black_24dp"
+                android:title="Share" />
+
+        </menu>
+    </item>
+
+</menu>

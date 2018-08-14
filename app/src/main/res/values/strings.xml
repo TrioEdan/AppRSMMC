@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Rumah Sakit Musi Medika Cendikia</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">RS Musi Medika Cendikia Palembang</string>
+    <string name="nav_header_subtitle">www.rsmmcpalembang.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="skip">SKIP</string>
+    <string name="next">NEXT</string>
+    <string name="start">GOT IT</string>
+
+
+    <string name="screen_welcome">Selamat Datang</string>
+
+    <string name="slide_1_title">Registrasi Online</string>
+    <string name="slide_1_desc">Bagaimana Alur Registrasi Online RS Musi Medika Cendikia Palembang ?</string>
+
+    <string name="slide_2_title">Melakukan Pendaftaran</string>
+    <string name="slide_2_desc">Isi Form kunjungan pasien jika anda telah memiliki kartu berobat. Jika belum kunjungi loket pendaftaran pasien.</string>
+
+    <string name="slide_3_title">Pasien Mendatangi Loket</string>
+    <string name="slide_3_desc">Datang sesuai dengan tanggal yang telah ditentukan dengan membawa kelengkapan data pasien seperti Kartu Pasien, KTP (Jika tidak ada Kartu) dan Dokumen Rujukan (Jika Pasien BPJS).</string>
+
+    <string name="slide_4_title">Pendaftaran Selesai</string>
+    <string name="slide_4_desc">Pasien menuju ruang tunggu Poliklinik yang telah didaftarkan.</string>
+
+    <string name="my_preference">"com.akbar.com.MyPref"</string>
+    <string name="my_preference_key">"com.akbar.com.MyPrefKey"</string>
+    <string name="daftar">Daftar</string>
+    <string name="bantuan">Bantuan</string>
+
+</resources>
