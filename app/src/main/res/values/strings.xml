@@ -3,7 +3,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">RS Musi Medika Cendikia Palembang</string>
-    <string name="nav_header_subtitle">www.rsmmcpalembang.com</string>
+    <string name="nav_header_subtitle">www.rsmmcpalembang.id</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="skip">SKIP</string>
@@ -11,7 +11,7 @@
     <string name="start">GOT IT</string>
 
 
-    <string name="screen_welcome">Selamat Datang</string>
+    <string name="screen_welcome">SELAMAT DATANG DI REGISTRASI ONLINE PASIEN RUMAH SAKIT MUSI MEDIKA CENDIKIA PALEMBANG</string>
 
     <string name="slide_1_title">Registrasi Online</string>
     <string name="slide_1_desc">Bagaimana Alur Registrasi Online RS Musi Medika Cendikia Palembang ?</string>
@@ -30,4 +30,26 @@
     <string name="daftar">Daftar</string>
     <string name="bantuan">Bantuan</string>
 
+    <string-array name="cara_bayar">
+        <item>KERJASAMA</item>
+        <item>UMUM</item>
+    </string-array>
+
+    <string-array name="poliklinik">
+        <item>BJ00 - AKUPUNTUR</item>
+        <item>BC00 - ALERGI</item>
+        <item>BR00 - ANAK</item>
+        <item>CD00 - ANASTESI</item>
+        <item>BB06 - BEDAH DIGESTIF</item>
+        <item>BB05 - BEDAH ONKOLOGI</item>
+        <item>BB01 - BEDAH ORTHOLOGI</item>
+        <item>BB03 - BEDAH PLASTIK</item>
+        <item>BB04 - BEDAH SARAF</item>
+        <item>BB00 - BEDAH UMUM</item>
+        <item>BB02 - BEDAH UROLOGI</item>
+        <item>BK01 - FISIOTERAPI</item>
+        <item>BQ03 - GASTROHEPATOLOGI</item>
+        <item>BG00 - GIGI DAN MULUT</item>
+        <item>BQ04 - GIZI</item>
+    </string-array>
 </resources>

@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.ShareActionProvider;
+import android.text.util.Linkify;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,16 +17,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    String phone = "111-111-1111";
+    FloatingActionButton fab_plus, fab_add, fab_help;
+    Animation FabOpen, FabClose, FabRClockwise, FabRanticlockwise;
+    boolean isOpen = false;
+    String phone = "(0711)-446272";
+
+    Intent goDaftar,goHistory;
+
+    private ShareActionProvider shareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,26 +47,74 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarid);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fabMenu = (FloatingActionButton) findViewById(R.id.floatingActionButton);
-        FloatingActionButton fabTambahButton = (FloatingActionButton) findViewById(R.id.addButton);
-        FloatingActionButton fabBantuanButton = (FloatingActionButton) findViewById(R.id.helpButton);
-        final LinearLayout mAddLayout = (LinearLayout) findViewById(R.id.addLayout);
-        final LinearLayout mHelpLayout = (LinearLayout) findViewById(R.id.helpLayout);
-        fabMenu.setOnClickListener(new View.OnClickListener() {
+
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                TextView tdate = (TextView) findViewById(R.id.date);
+                                long date = System.currentTimeMillis();
+                                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy\nhh-mm-ss a");
+                                String dateString = sdf.format(date);
+                                tdate.setText(dateString);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+        t.start();
+
+
+        fab_plus = findViewById(R.id.fab_plus);
+        fab_add = findViewById(R.id.fab_add);
+        fab_help = findViewById(R.id.fab_help);
+        FabOpen = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_open);
+        FabClose = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
+        FabRClockwise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_clockwise);
+        FabRanticlockwise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_anticlockwise);
+        fab_plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mAddLayout.getVisibility() == View.VISIBLE && mHelpLayout.getVisibility()
-                        == View.VISIBLE){
-                    mAddLayout.setVisibility(View.GONE);
-                    mHelpLayout.setVisibility(View.GONE);
-                }else {
-                    mAddLayout.setVisibility(View.VISIBLE);
-                    mHelpLayout.setVisibility(View.VISIBLE);
+                if(isOpen)
+                {
+                    fab_add.startAnimation(FabClose);
+                    fab_help.startAnimation(FabClose);
+                    fab_plus.startAnimation(FabRanticlockwise);
+                    fab_help.setClickable(false);
+                    fab_add.setClickable(false);
+                    isOpen=false;
+                }
+                else
+                    {
+                    fab_add.startAnimation(FabOpen);
+                    fab_help.startAnimation(FabOpen);
+                    fab_plus.startAnimation(FabRClockwise);
+                    fab_help.setClickable(true);
+                    fab_add.setClickable(true);
+                    isOpen=true;
+
                 }
             }
         });
 
-        fabTambahButton.setOnClickListener(new View.OnClickListener() {
+
+
+        fab_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                GoOther();
+            }
+        });
+
+        fab_help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent mIntent = new Intent(Intent.ACTION_DIAL);
@@ -61,24 +123,12 @@ public class MainActivity extends AppCompatActivity
                     startActivity(mIntent);
                 }else{
                     Toast.makeText(MainActivity.this, "There is no app that support this action"
-                    , Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        fabBantuanButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent mIntent = new Intent(Intent.ACTION_VIEW);
-                mIntent.setData(Uri.parse("sms:" + phone));
-                if (mIntent.resolveActivity(getPackageManager()) != null){
-                    startActivity(mIntent);
-                }else{
-                    Toast.makeText(MainActivity.this, "There is no app that support this action"
                             , Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -99,6 +149,18 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+
+    public void GoOther(){
+        goDaftar = new Intent(getApplicationContext(),DaftarPasien.class);
+        startActivity(goDaftar);
+        overridePendingTransition(R.anim.go_up, R.anim.go_down);
+    }
+
+   public void GoHistory(){
+       goHistory = new Intent(getApplicationContext(),HistoryPendaftar.class);
+       startActivity(goHistory);
+       overridePendingTransition(R.anim.go_up, R.anim.go_down);
+   }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -129,25 +191,46 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_daftar) {
-            // Handle the camera action
+            // Handle the add action
+            GoOther();
+            return true;
+
+
         } else if (id == R.id.nav_history) {
+            GoHistory();
+            return true;
 
         } else if (id == R.id.nav_jadwal) {
 
         } else if (id == R.id.nav_berita) {
 
         } else if (id == R.id.nav_bantuan) {
-
+            Intent intent = new Intent(this, Bantuan.class);
+            startActivity(intent);
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_kontak) {
 
         } else if (id == R.id.nav_share) {
 
+            switch (item.getItemId()) {
+                case R.id.nav_share:
+                    Intent i = new Intent(Intent.ACTION_SEND);
+                    i.setType("text/plain");
+                    i.putExtra(
+                            android.content.Intent.EXTRA_TEXT, "Test Share https://www.rsmmcpalembang.id");
+                    startActivity(Intent.createChooser(i, "Share Via"));
+                    break;
+            }
+            Toast.makeText(getApplicationContext(), "You click on menu share", Toast.LENGTH_SHORT).show();
+            return super.onOptionsItemSelected(item);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
+
+
     }
 }

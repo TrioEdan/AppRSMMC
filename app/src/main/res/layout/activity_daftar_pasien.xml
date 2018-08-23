@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#AFEEEE"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/no_rekam_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/no_rekam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:ems="10"
+                android:hint="Cari No.Rekam Medis" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/edittgl_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/editgl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20px"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:ems="10"
+                android:hint="Tanggal Lahir (Tekan 2x)" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_cari"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/dot_dark_screen1"
+            android:text="CARI PASIEN"
+            android:drawableLeft="@drawable/ic_action_search"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:textColor="@android:color/white" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/namapasien_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/nama_pasien"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:focusable="false"
+                android:hint="Nama Pasien" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/alamat_pasien_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/alamat_pasien"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:layout_marginTop="20px"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:hint="Alamat Pasien" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Cara Bayar"
+                android:textSize="18sp"
+                android:layout_marginTop="20px"/>
+
+            <Spinner
+                android:id="@+id/spinner_bayar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:entries="@array/cara_bayar"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:spinnerMode="dropdown">
+            </Spinner>
+
+            <Spinner
+                android:id="@+id/spinner_kerjasama"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp">
+            </Spinner>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Poliklinik Tujuan"
+                android:textSize="18sp"
+                android:layout_marginTop="20px"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"/>
+
+            <Spinner
+                android:id="@+id/spinner_poli"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="16dp"
+                android:entries="@array/poliklinik"
+                android:layout_marginLeft="16dp"
+                android:spinnerMode="dropdown">
+            </Spinner>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tglberobat_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/tgl_berobat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:hint="Tanggal Berobat" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/namapendaftar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/nama_pendaftar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:hint="Nama Pendaftar" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/nohp_pasien_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/nohp_pasien"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:hint="No.Telp/Hp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/no_rujukan_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/nomor_rujukan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:hint="Nomor Rujukan" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_daftar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/dot_dark_screen1"
+                android:text="DAFTAR"
+                android:drawableLeft="@drawable/ic_action_plus"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</android.support.v4.widget.NestedScrollView>

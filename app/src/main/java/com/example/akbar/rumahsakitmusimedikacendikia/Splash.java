@@ -23,11 +23,11 @@ public class Splash extends AppCompatActivity {
         Animation myanim = AnimationUtils.loadAnimation(this,R.anim.mytransition);
         tv.startAnimation(myanim);
         iv.startAnimation(myanim);
-        final Intent i = new Intent(this,Bantuan.class);
+        final Intent i = new Intent(this,MainActivity.class);
         Thread timer = new Thread(){
             public  void run () {
                 try {
-                    sleep(5000);
+                    sleep(4000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
