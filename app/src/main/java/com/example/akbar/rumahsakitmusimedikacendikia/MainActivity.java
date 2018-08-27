@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void GoOther(){
-        goDaftar = new Intent(getApplicationContext(),DaftarPasien.class);
+        goDaftar = new Intent(getApplicationContext(),CreateData.class);
         startActivity(goDaftar);
         overridePendingTransition(R.anim.go_up, R.anim.go_down);
     }

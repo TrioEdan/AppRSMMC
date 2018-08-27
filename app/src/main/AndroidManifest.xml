@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.akbar.rumahsakitmusimedikacendikia">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_logommc"
@@ -28,16 +31,21 @@
             android:name=".DaftarPasien"
             android:label="DAFTAR PASIEN"
             android:parentActivityName=".MainActivity" />
+
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
 
-        <activity android:name=".HistoryPendaftar"
+        <activity
+            android:name=".HistoryPendaftar"
             android:label="HISTORY PASIEN"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
+
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
+
+        <activity android:name=".CreateData"></activity>
     </application>
 
 </manifest>
