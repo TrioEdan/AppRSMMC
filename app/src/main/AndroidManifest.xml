@@ -2,13 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.akbar.rumahsakitmusimedikacendikia">
 
-<<<<<<< HEAD
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-=======
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
->>>>>>> b33312a91eafe22230aa8ed3b3988d01dd5b8df5
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_logommc"
@@ -44,7 +41,7 @@
             android:name=".HistoryPendaftar"
             android:label="HISTORY PASIEN"
             android:parentActivityName=".MainActivity" />
-<<<<<<< HEAD
+
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
@@ -52,17 +49,14 @@
         <activity android:name=".CallCustomer"
             android:label="CONTACT CALL CENTER"
             android:parentActivityName=".MainActivity"/>
-=======
 
->>>>>>> b33312a91eafe22230aa8ed3b3988d01dd5b8df5
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
 
-<<<<<<< HEAD
-=======
+
         <activity android:name=".CreateData"></activity>
->>>>>>> b33312a91eafe22230aa8ed3b3988d01dd5b8df5
+
     </application>
 
 </manifest>

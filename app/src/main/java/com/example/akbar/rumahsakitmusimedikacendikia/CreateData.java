@@ -1,5 +1,6 @@
 package com.example.akbar.rumahsakitmusimedikacendikia;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -107,7 +108,7 @@ public class CreateData extends AppCompatActivity {
                 JSONObject object = new JSONObject(s);
                 if (!object.getBoolean("error")) {
                     Toast.makeText(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
-                    //refreshHeroList(object.getJSONArray("heroes"));
+                    startActivity(new Intent(CreateData.this,MainActivity.class));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
