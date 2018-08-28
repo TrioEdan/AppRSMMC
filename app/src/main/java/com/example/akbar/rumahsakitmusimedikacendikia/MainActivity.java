@@ -1,13 +1,11 @@
 package com.example.akbar.rumahsakitmusimedikacendikia;
 
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.ShareActionProvider;
-import android.text.util.Linkify;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,8 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,7 +32,7 @@ public class MainActivity extends AppCompatActivity
     boolean isOpen = false;
     String phone = "(0711)-446272";
 
-    Intent goDaftar,goHistory;
+    Intent goDaftar,goHistory,goContact,goBantuan;
 
     private ShareActionProvider shareActionProvider;
 
@@ -162,6 +158,18 @@ public class MainActivity extends AppCompatActivity
        overridePendingTransition(R.anim.go_up, R.anim.go_down);
    }
 
+   public void GoContact(){
+        goContact = new Intent(getApplicationContext(),CallCustomer.class);
+        startActivity(goContact);
+        overridePendingTransition(R.anim.go_up, R.anim.go_down);
+   }
+
+    public void GoBantuan(){
+        goBantuan = new Intent(getApplicationContext(),Bantuan.class);
+        startActivity(goBantuan);
+        overridePendingTransition(R.anim.go_up, R.anim.go_down);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -205,12 +213,13 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_berita) {
 
         } else if (id == R.id.nav_bantuan) {
-            Intent intent = new Intent(this, Bantuan.class);
-            startActivity(intent);
+            GoBantuan();
+            return true;
         } else if (id == R.id.nav_about) {
 
         } else if (id == R.id.nav_kontak) {
-
+            GoContact();
+            return true;
         } else if (id == R.id.nav_share) {
 
             switch (item.getItemId()) {
