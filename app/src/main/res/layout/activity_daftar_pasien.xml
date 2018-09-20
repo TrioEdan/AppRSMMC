@@ -17,6 +17,21 @@
             android:background="#ffffff"
             android:orientation="vertical">
 
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/inp_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:visibility="gone"/>
+
+            </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/no_rekam_layout"
@@ -32,7 +47,8 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
                 android:ems="10"
-                android:hint="Cari No.Rekam Medis" />
+                android:hint="Cari No.Rekam Medis"
+                android:textSize="20sp"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -52,7 +68,8 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
                 android:ems="10"
-                android:hint="Tanggal Lahir (Tekan 2x)" />
+                android:hint="Tanggal Lahir (Tekan 2x)"
+                android:textSize="20sp"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -62,6 +79,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/dot_dark_screen1"
             android:text="CARI PASIEN"
+            android:textSize="18sp"
             android:drawableLeft="@drawable/ic_action_search"
             android:layout_marginRight="16dp"
             android:layout_marginLeft="16dp"
@@ -82,7 +100,8 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
                 android:focusable="false"
-                android:hint="Nama Pasien" />
+                android:hint="Nama Pasien"
+                android:textSize="20sp"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -101,7 +120,8 @@
                 android:layout_marginTop="20px"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
-                android:hint="Alamat Pasien" />
+                android:hint="Alamat Pasien"
+                android:textSize="20sp"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -120,12 +140,12 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
                 android:text="Cara Bayar"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:layout_marginTop="20px"/>
 
             <Spinner
                 android:id="@+id/spinner_bayar"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:entries="@array/cara_bayar"
                 android:layout_marginRight="16dp"
@@ -136,7 +156,7 @@
             <Spinner
                 android:id="@+id/spinner_kerjasama"
                 android:visibility="gone"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp">
@@ -146,17 +166,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Poliklinik Tujuan"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:layout_marginTop="20px"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"/>
 
             <Spinner
                 android:id="@+id/spinner_poli"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="16dp"
                 android:entries="@array/poliklinik"
+                android:layout_marginLeft="16dp"
+                android:spinnerMode="dropdown">
+            </Spinner>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama Dokter"
+                android:textSize="20sp"
+                android:layout_marginTop="20px"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"/>
+
+            <Spinner
+                android:id="@+id/spinner_dokter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="16dp"
+                android:entries="@array/Dokter"
                 android:layout_marginLeft="16dp"
                 android:spinnerMode="dropdown">
             </Spinner>
@@ -175,7 +214,8 @@
                     android:layout_marginTop="20px"
                     android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:hint="Tanggal Berobat" />
+                    android:hint="Tanggal Berobat"
+                    android:textSize="20sp"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -193,7 +233,8 @@
                     android:layout_marginTop="20px"
                     android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:hint="Nama Pendaftar" />
+                    android:hint="Nama Pendaftar"
+                    android:textSize="20sp"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -209,9 +250,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20px"
+                    android:inputType="number"
                     android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:hint="No.Telp/Hp" />
+                    android:hint="No.Telp/Hp"
+                    android:textSize="20sp"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -229,7 +272,8 @@
                     android:layout_marginTop="20px"
                     android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
-                    android:hint="Nomor Rujukan" />
+                    android:hint="Nomor Rujukan"
+                    android:textSize="20sp"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -239,16 +283,23 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/dot_dark_screen1"
                 android:text="DAFTAR"
+                android:textSize="18sp"
                 android:drawableLeft="@drawable/ic_action_plus"
                 android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp"
                 android:textColor="@android:color/white" />
 
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:visibility="gone"/>
+
         </LinearLayout>
 
     </LinearLayout>
-
-
 
 
 </android.support.v4.widget.NestedScrollView>

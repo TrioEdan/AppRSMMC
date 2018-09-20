@@ -35,7 +35,14 @@
         <item>UMUM</item>
     </string-array>
 
+    <string-array name="kerjasama">
+        <item>BPJS</item>
+        <item>JAMSOSKES</item>
+        <item>BANK SUMSEL</item>
+    </string-array>
+
     <string-array name="poliklinik">
+        <item>-KLIK DISINI-</item>
         <item>BJ00 - AKUPUNTUR</item>
         <item>BC00 - ALERGI</item>
         <item>BR00 - ANAK</item>
@@ -51,5 +58,34 @@
         <item>BQ03 - GASTROHEPATOLOGI</item>
         <item>BG00 - GIGI DAN MULUT</item>
         <item>BQ04 - GIZI</item>
+    </string-array>
+
+    <string-array name="Dokter">
+        <item>-KLIK DISINI-</item>
+        <item>Dr. Hj. Siti Mirza Nuriah, SpOg(K)</item>
+        <item>Dr. H. Indrayadi SpA</item>
+        <item>Dr. Diah Melly Marlyana, SpOG(K)</item>
+        <item>Dr. Yunita Fediani, SpA,M.Kes</item>
+        <item>Dr. Sonny H.A. Harsono,SpA</item>
+        <item>Drg. Else Gustiana, SpOrt</item>
+        <item>Dr. Alyssa Amelia Vania Utami</item>
+        <item>Dr. Erni Afriani, SpPD</item>
+        <item>Dr. Yenni Dian Andayani, SpPD</item>
+        <item>Dr. Erinnah Yunvina Permatasari</item>
+        <item>Dr. Monica Imelda Krist</item>
+        <item>Dr. Ekta Margaredta</item>
+        <item>Dr. Suprapti, SpPD</item>
+        <item>Dr. RM dewi, SpPD</item>
+        <item>Dr. Yuniza, SpPD</item>
+        <item>Dr. Hidayatullah, SpTHT-KL</item>
+        <item>Dr.  Mulawan Umar,  SpB(K)Onk</item>
+        <item>Drg. Denai Apriansyah</item>
+        <item>Dr. Jimmy Vareta, SpB</item>
+        <item>Dr. Erwin Maulan, SpB</item>
+        <item>Dr. Amirah Novaliani, SpOG(K)</item>
+        <item>Dr. SNA Ratnasari Devi, Sp.RAD</item>
+        <item>DR. Dr. H. M Alsen Arlan, SpB-KBD, MARS</item>
+        <item>Dr. Eva Kumalasari, SpM</item>
+        <item>Dr. Yusni Puspita, SpAn</item>
     </string-array>
 </resources>

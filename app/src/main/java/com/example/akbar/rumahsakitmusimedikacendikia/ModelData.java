@@ -1,15 +1,38 @@
 package com.example.akbar.rumahsakitmusimedikacendikia;
 
 public class ModelData {
-    private int id;
-    String nomed, tgllhr, nama, alamat, nohp, bayar, poli, dokter, tglbook, namadaftar, norujuk;
+    private String id, no_medrec, nomed, tgllhr, nama, alamat, nohp, bayar, poli, dokter, tglbook, namadaftar, norujuk;
 
-    public int getId() {
+    public ModelData(String id, String no_medrec, String nomed, String tgllhr, String nama, String alamat, String nohp, String bayar, String poli, String dokter, String tglbook, String namadaftar, String norujuk) {
+        this.id = id;
+        this.no_medrec = no_medrec;
+        this.nomed = nomed;
+        this.tgllhr = tgllhr;
+        this.nama = nama;
+        this.alamat = alamat;
+        this.nohp = nohp;
+        this.bayar = bayar;
+        this.poli = poli;
+        this.dokter = dokter;
+        this.tglbook = tglbook;
+        this.namadaftar = namadaftar;
+        this.norujuk = norujuk;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getNo_medrec() {
+        return no_medrec;
+    }
+
+    public void setNo_medrec(String no_medrec) {
+        this.no_medrec = no_medrec;
     }
 
     public String getNomed() {
@@ -97,21 +120,6 @@ public class ModelData {
     }
 
     public void setNorujuk(String norujuk) {
-        this.norujuk = norujuk;
-    }
-
-    public ModelData(int id, String nomed, String tgllhr, String nama, String alamat, String nohp, String bayar, String poli, String dokter, String tglbook, String namadaftar, String norujuk) {
-        this.id = id;
-        this.nomed = nomed;
-        this.tgllhr = tgllhr;
-        this.nama = nama;
-        this.alamat = alamat;
-        this.nohp = nohp;
-        this.bayar = bayar;
-        this.poli = poli;
-        this.dokter = dokter;
-        this.tglbook = tglbook;
-        this.namadaftar = namadaftar;
         this.norujuk = norujuk;
     }
 
