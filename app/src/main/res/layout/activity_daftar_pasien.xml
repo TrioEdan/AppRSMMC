@@ -155,10 +155,11 @@
 
             <Spinner
                 android:id="@+id/spinner_kerjasama"
-                android:visibility="gone"
+                android:entries="@array/kerjasama"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="16dp"
+                android:spinnerMode="dropdown"
                 android:layout_marginLeft="16dp">
             </Spinner>
 

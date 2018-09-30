@@ -43,7 +43,7 @@ public class DaftarPasien extends AppCompatActivity{
     private static final int CODE_GET_REQUEST = 1024;
     private static final int CODE_POST_REQUEST = 1025;
 
-    Spinner etpoli, etbayar, etdokter;
+    Spinner etpoli, etbayar, etdokter, spkerjasama;
     EditText etid, etnomed, etdate, ettgllhr, etnama, etalamat, etnohp, ettglbook, etnamadaftar, etnorujuk;
     ProgressBar progressBar;
     Button mbtnDaftar, mbtnCari;
@@ -136,6 +136,7 @@ public class DaftarPasien extends AppCompatActivity{
         etdokter = findViewById(R.id.spinner_dokter);
         etpoli = findViewById(R.id.spinner_poli);
         etdate = findViewById(R.id.tgl_hariini);
+        spkerjasama = findViewById(R.id.spinner_kerjasama);
 
         mbtnCari = findViewById(R.id.btn_cari);
         mbtnDaftar = findViewById(R.id.btn_daftar);
@@ -249,6 +250,7 @@ public class DaftarPasien extends AppCompatActivity{
         String bayar = etbayar.getSelectedItem().toString();
         String poli = etpoli.getSelectedItem().toString();
         String dokter = etdokter.getSelectedItem().toString();
+        String kerjasama = spkerjasama.getSelectedItem().toString();
         String tglnow = etdate.getText().toString();
 
         HashMap<String, String > params = new HashMap<>();
@@ -264,6 +266,7 @@ public class DaftarPasien extends AppCompatActivity{
         params.put("namadaftar",namadaftar);
         params.put("norujuk",norujuk);
         params.put("tglnow",tglnow);
+        params.put("kerjasama",kerjasama);
 
         PerformNetworkRequest request = new PerformNetworkRequest(ServerAPI.URL_CREATE, params,CODE_POST_REQUEST);
         request.execute();

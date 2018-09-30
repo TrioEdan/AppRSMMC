@@ -1,9 +1,9 @@
 package com.example.akbar.rumahsakitmusimedikacendikia;
 
 public class ModelData {
-    private String id, no_medrec, nomed, tgllhr, nama, alamat, nohp, bayar, poli, dokter, tglbook, namadaftar, norujuk, tglnow;
+    private String id, no_medrec, nomed, tgllhr, nama, alamat, nohp, bayar, kerjasama, poli, dokter, tglbook, namadaftar, norujuk, tglnow;
 
-    public ModelData(String id, String no_medrec, String nomed, String tgllhr, String nama, String alamat, String nohp, String bayar, String poli, String dokter, String tglbook, String namadaftar, String norujuk, String tglnow) {
+    public ModelData(String id, String no_medrec, String nomed, String tgllhr, String nama, String alamat, String nohp, String bayar, String kerjasama, String poli, String dokter, String tglbook, String namadaftar, String norujuk, String tglnow) {
         this.id = id;
         this.no_medrec = no_medrec;
         this.nomed = nomed;
@@ -12,6 +12,7 @@ public class ModelData {
         this.alamat = alamat;
         this.nohp = nohp;
         this.bayar = bayar;
+        this.kerjasama = kerjasama;
         this.poli = poli;
         this.dokter = dokter;
         this.tglbook = tglbook;
@@ -83,6 +84,10 @@ public class ModelData {
     public void setBayar(String bayar) {
         this.bayar = bayar;
     }
+
+    public String getKerjasama(){ return kerjasama; }
+
+    public void setKerjasama(String kerjasama) { this.kerjasama = kerjasama; }
 
     public String getPoli() {
         return poli;
