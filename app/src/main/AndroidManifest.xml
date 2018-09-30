@@ -47,17 +47,17 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
 
-        <activity android:name=".CallCustomer"
+        <activity
+            android:name=".CallCustomer"
             android:label="CONTACT CALL CENTER"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
 
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".MainActivity" />
 
-
-        <activity android:name=".CreateData"></activity>
-
+        <activity android:name=".CreateData" />
+        <activity android:name=".GeneratorActivity"></activity>
     </application>
 
 </manifest>

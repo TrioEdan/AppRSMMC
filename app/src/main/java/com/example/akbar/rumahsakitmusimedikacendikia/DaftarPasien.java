@@ -2,6 +2,9 @@ package com.example.akbar.rumahsakitmusimedikacendikia;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,17 +14,24 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -34,16 +44,44 @@ public class DaftarPasien extends AppCompatActivity{
     private static final int CODE_POST_REQUEST = 1025;
 
     Spinner etpoli, etbayar, etdokter;
-    EditText etid, etnomed, ettgllhr, etnama, etalamat, etnohp, ettglbook, etnamadaftar, etnorujuk;
+    EditText etid, etnomed, etdate, ettgllhr, etnama, etalamat, etnohp, ettglbook, etnamadaftar, etnorujuk;
     ProgressBar progressBar;
     Button mbtnDaftar, mbtnCari;
     ProgressDialog pd;
+
+    private Button gen_btn;
+    private EditText text1;
+    String text2Qr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_pasien);
+
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                EditText tdate = (EditText) findViewById(R.id.tgl_hariini);
+                                long date = System.currentTimeMillis();
+                                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy hh:mm:ss");
+                                String dateString = sdf.format(date);
+                                tdate.setText(dateString);
+                            }
+                        });
+                    }
+                } catch (InterruptedException e) {
+                }
+            }
+        };
+        t.start();
+
         date=findViewById(R.id.editgl);
         dateberobat=findViewById(R.id.tgl_berobat);
         date.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +135,7 @@ public class DaftarPasien extends AppCompatActivity{
         etbayar = (Spinner) findViewById(R.id.spinner_bayar);
         etdokter = findViewById(R.id.spinner_dokter);
         etpoli = findViewById(R.id.spinner_poli);
+        etdate = findViewById(R.id.tgl_hariini);
 
         mbtnCari = findViewById(R.id.btn_cari);
         mbtnDaftar = findViewById(R.id.btn_daftar);
@@ -107,18 +146,48 @@ public class DaftarPasien extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 getData();
+
             }
         });
 
-        mbtnDaftar.setOnClickListener(new View.OnClickListener() {
+
+
+//        mbtnDaftar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                createData();
+//
+//            }
+//        });
+
+        final  Context context = this;
+        text1 = this.findViewById(R.id.tgl_hariini);
+        gen_btn = this.findViewById(R.id.btn_daftar);
+
+        gen_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                text2Qr = text1 .getText().toString().trim();
+                MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+                try{
+                    BitMatrix bitMatrix = multiFormatWriter.encode(text2Qr, BarcodeFormat.QR_CODE, 200, 200);
+                    BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+                    Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+                    Intent intent = new Intent(context, GeneratorActivity.class);
+                    intent.putExtra("pict",bitmap);
+                    context.startActivity(intent);
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
                 createData();
             }
         });
 
 
     }
+
+
+
 
     private void getData(){
         pd = new ProgressDialog(DaftarPasien.this);
@@ -180,6 +249,7 @@ public class DaftarPasien extends AppCompatActivity{
         String bayar = etbayar.getSelectedItem().toString();
         String poli = etpoli.getSelectedItem().toString();
         String dokter = etdokter.getSelectedItem().toString();
+        String tglnow = etdate.getText().toString();
 
         HashMap<String, String > params = new HashMap<>();
         params.put("nomed",nomed);
@@ -193,6 +263,7 @@ public class DaftarPasien extends AppCompatActivity{
         params.put("tglbook",tglbook);
         params.put("namadaftar",namadaftar);
         params.put("norujuk",norujuk);
+        params.put("tglnow",tglnow);
 
         PerformNetworkRequest request = new PerformNetworkRequest(ServerAPI.URL_CREATE, params,CODE_POST_REQUEST);
         request.execute();
@@ -224,6 +295,8 @@ public class DaftarPasien extends AppCompatActivity{
                 JSONObject object = new JSONObject(s);
                 if (!object.getBoolean("error")){
                     Toast.makeText(getApplicationContext(),object.getString("message"), Toast.LENGTH_SHORT).show();
+                    //Intent intent = new Intent(getApplicationContext(),GeneratorActivity.class);
+                    //startActivity(intent);
 
                 }
             }catch (JSONException e){

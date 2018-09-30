@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
                             public void run() {
                                 TextView tdate = (TextView) findViewById(R.id.date);
                                 long date = System.currentTimeMillis();
-                                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy\nhh-mm-ss a");
+                                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy\nhh:mm:ss");
                                 String dateString = sdf.format(date);
                                 tdate.setText(dateString);
                             }
