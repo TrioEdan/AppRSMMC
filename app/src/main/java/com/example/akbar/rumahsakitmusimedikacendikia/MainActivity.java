@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.ShareActionProvider;
+import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -36,6 +37,10 @@ public class MainActivity extends AppCompatActivity
 
     private ShareActionProvider shareActionProvider;
 
+    private long lastPressedTime;
+
+    private static final int PERIOD = 2000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +60,7 @@ public class MainActivity extends AppCompatActivity
                             public void run() {
                                 TextView tdate = (TextView) findViewById(R.id.date);
                                 long date = System.currentTimeMillis();
-                                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy\nhh-mm-ss a");
+                                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy\nhh:mm:ss");
                                 String dateString = sdf.format(date);
                                 tdate.setText(dateString);
                             }
@@ -136,6 +141,23 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            switch (event.getAction()) {
+                case KeyEvent.ACTION_DOWN:
+                    if (event.getDownTime() - lastPressedTime < PERIOD) {
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Tekan sekali lagi untuk keluar dari Aplikasi.",
+                                Toast.LENGTH_SHORT).show();
+                        lastPressedTime = event.getEventTime();
+                    }
+                    return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -147,7 +169,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void GoOther(){
-        goDaftar = new Intent(getApplicationContext(),CreateData.class);
+        goDaftar = new Intent(getApplicationContext(),DaftarPasien.class);
         startActivity(goDaftar);
         overridePendingTransition(R.anim.go_up, R.anim.go_down);
     }
@@ -212,6 +234,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_berita) {
 
+
         } else if (id == R.id.nav_bantuan) {
             GoBantuan();
             return true;
@@ -228,7 +251,7 @@ public class MainActivity extends AppCompatActivity
                     i.setType("text/plain");
                     i.putExtra(
                             android.content.Intent.EXTRA_TEXT, "Test Share https://www.rsmmcpalembang.id");
-                    startActivity(Intent.createChooser(i, "Share Via"));
+                    startActivity(Intent.createChooser(i, "Share Link!"));
                     break;
             }
             Toast.makeText(getApplicationContext(), "You click on menu share", Toast.LENGTH_SHORT).show();

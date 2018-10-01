@@ -118,7 +118,7 @@ public class Bantuan extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        session.setFirstTimeLaunch(false);
+        session.setFirstTimeLaunch(true);
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();
     }
