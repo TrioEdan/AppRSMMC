@@ -31,9 +31,8 @@
     <string name="bantuan">Bantuan</string>
 
     <string-array name="cara_bayar">
-        <item>-KLIK DISINI-</item>
-        <item>KERJASAMA</item>
         <item>UMUM</item>
+        <item>KERJASAMA</item>
     </string-array>
 
     <string-array name="kerjasama">

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="#AFEEEE"
     android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:layout_marginTop="10dp">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -160,6 +168,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="16dp"
                 android:spinnerMode="dropdown"
+                android:visibility="gone"
                 android:layout_marginLeft="16dp">
             </Spinner>
 
@@ -272,6 +281,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20px"
                     android:inputType="number"
+                    android:maxLength="12"
                     android:layout_marginRight="16dp"
                     android:layout_marginLeft="16dp"
                     android:hint="No.Telp/Hp"
@@ -322,5 +332,5 @@
 
     </LinearLayout>
 
-
-</android.support.v4.widget.NestedScrollView>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.constraint.ConstraintLayout>

@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -48,6 +49,8 @@ public class DaftarPasien extends AppCompatActivity{
     ProgressBar progressBar;
     Button mbtnDaftar, mbtnCari;
     ProgressDialog pd;
+    AdapterView adapter;
+    int currentPos =0;
 
     private Button gen_btn;
     private EditText text1;
@@ -70,7 +73,7 @@ public class DaftarPasien extends AppCompatActivity{
                             public void run() {
                                 EditText tdate = (EditText) findViewById(R.id.tgl_hariini);
                                 long date = System.currentTimeMillis();
-                                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy hh:mm:ss");
+                                SimpleDateFormat sdf = new SimpleDateFormat("MM dd yyyy hh:mm:ss");
                                 String dateString = sdf.format(date);
                                 tdate.setText(dateString);
                             }
@@ -94,7 +97,7 @@ public class DaftarPasien extends AppCompatActivity{
                 datePickerDialog=new DatePickerDialog(DaftarPasien.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                        String tgl=year+"-"+(month+1)+"-"+day;
+                        String tgl=day+"-"+(month+1)+"-"+year;
                         date.setText(tgl);
 
                     }
@@ -106,19 +109,34 @@ public class DaftarPasien extends AppCompatActivity{
         dateberobat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar calendar=Calendar.getInstance();
-                final int year=calendar.get(Calendar.YEAR);
-                final int month=calendar.get(Calendar.MONTH);
-                final int day=calendar.get(Calendar.DAY_OF_MONTH);
-                datePickerDialog=new DatePickerDialog(DaftarPasien.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                        String tgl=year+"-"+(month+1)+"-"+day;
-                        dateberobat.setText(tgl);
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
 
-                    }
-                },year,month,day);
-                datePickerDialog.show();
+                c.set(Calendar.DAY_OF_MONTH,mDay);
+                DatePickerDialog dpd = new DatePickerDialog(DaftarPasien.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                Calendar cal = Calendar.getInstance();
+                                cal.set(Calendar.MONTH, monthOfYear);
+                                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                                cal.set(Calendar.YEAR, year);
+                                if (cal.before(c)){
+                                    return;
+                                }
+                                StringBuilder Mdate = new StringBuilder();
+                                //date.delete(0, date.length());
+                                Mdate.append((dayOfMonth<10?"0":"")).append(dayOfMonth)
+                                        .append("-").append((monthOfYear + 1) < 10 ? "0" : "")
+                                        .append((monthOfYear+1)).append("-").append(year);
+                                dateberobat.setText(Mdate);
+                            }
+                        }, mYear, mMonth, mDay);
+                dpd.getDatePicker().setMinDate(c.getTimeInMillis());
+                dpd.show();
             }
         });
 
@@ -147,6 +165,22 @@ public class DaftarPasien extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 getData();
+
+            }
+        });
+
+        etbayar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                if (currentPos==position){
+                    spkerjasama.setVisibility(View.GONE);
+                }else{
+                    spkerjasama.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
@@ -181,11 +215,20 @@ public class DaftarPasien extends AppCompatActivity{
                     e.printStackTrace();
                 }
                 createData();
+                finish();
             }
         });
 
 
+
     }
+
+//    final DatePickerDialog.OnDateSetListener mdate = new DatePickerDialog.OnDateSetListener() {
+//        @Override
+//        public void onDateSet(DatePicker view, int year, int month, int day) {
+//            view.setMinDate(System.currentTimeMillis() - 1000);
+//        }
+//    };
 
 
 
